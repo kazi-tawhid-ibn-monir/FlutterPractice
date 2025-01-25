@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 
 class Home_2 extends StatefulWidget {
   const Home_2({super.key});
-
   @override
   State<Home_2> createState() => _Home_2State();
 }
-
 
 class _Home_2State extends State<Home_2> {
   @override
@@ -45,12 +43,10 @@ class _Home_2State extends State<Home_2> {
                     child: TextField(
                       controller: nameController,
                       decoration: InputDecoration(
-                        hintText: 'Enter Your Name',
-                        labelText: 'First Name',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20)
-                        )
-                      ),
+                          hintText: 'Enter Your Name',
+                          labelText: 'First Name',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20))),
                     ),
                   ),
                   Padding(
@@ -61,9 +57,7 @@ class _Home_2State extends State<Home_2> {
                           hintText: 'Enter Your Name',
                           labelText: 'Last Name',
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          )
-                      ),
+                              borderRadius: BorderRadius.circular(20))),
                     ),
                   ),
                   Padding(
@@ -74,9 +68,7 @@ class _Home_2State extends State<Home_2> {
                           hintText: 'Enter Your E-mail',
                           labelText: 'Email',
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          )
-                      ),
+                              borderRadius: BorderRadius.circular(20))),
                     ),
                   ),
                   Padding(
@@ -90,17 +82,18 @@ class _Home_2State extends State<Home_2> {
                           labelText: 'Password',
                           helperText: 'use-8-characters',
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          )
-                      ),
+                              borderRadius: BorderRadius.circular(20))),
                     ),
                   ),
-                  ElevatedButton(onPressed: (){
-                    String FullName = nameController.text + " " + lastNameController.text;
-                    print("Full Name: $FullName");
-                    print(emailController.text);
-                    print(passwordController.text);
-                  }, child: Text("Submit"))
+                  ElevatedButton(
+                      onPressed: () {
+                        String FullName =
+                            nameController.text + " " + lastNameController.text;
+                        print("Full Name: $FullName");
+                        print(emailController.text);
+                        print(passwordController.text);
+                      },
+                      child: Text("Submit"))
                 ],
               ),
             ),
