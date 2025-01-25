@@ -5,6 +5,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController name = TextEditingController();
+    TextEditingController password = TextEditingController();
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.deepPurple.shade300,
@@ -28,13 +30,15 @@ class Home extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
+                        controller: name,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           fillColor: Colors.greenAccent.shade100,
                           filled: true,
-                          labelText: 'Enter your name',
+                          hintText: 'Enter your name',
+                          labelText: 'Name',
                           labelStyle: TextStyle(
                             color: Colors.black87,
                           ),
@@ -44,20 +48,26 @@ class Home extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
+                        controller: password,
+                        obscureText: true,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
                           fillColor: Colors.greenAccent.shade100,
                           filled: true,
-                          labelText: 'Enter your name',
+                          hintText: 'Enter your password',
+                          labelText: 'Password',
                           labelStyle: TextStyle(
                             color: Colors.black87,
                           ),
                         ),
                       ),
                     ),
-                    ElevatedButton(onPressed: (){}, child: Text('Submit'))
+                    ElevatedButton(onPressed: (){
+                      print(name.text);
+                      print(password.text);
+                    }, child: Text('Submit'))
                   ],
                 ),
               ),
