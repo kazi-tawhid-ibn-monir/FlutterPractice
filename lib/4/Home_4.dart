@@ -48,7 +48,6 @@ class _Home_4State extends State<Home_4> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
-                    controller: _nameController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
@@ -77,6 +76,7 @@ class _Home_4State extends State<Home_4> {
                     controller: _passwordController,
                     obscureText: _secureText,
                     decoration: InputDecoration(
+
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -95,16 +95,26 @@ class _Home_4State extends State<Home_4> {
                     ),
                   ),
                 ),
-                ElevatedButton(onPressed: (){
-                  print(_nameController.text);
-                  print(_emailController.text);
-                  print(_passwordController.text);
-                }, child: Text("Submit")),
-                ElevatedButton(onPressed: (){
-                  _nameController.clear();
-                  _emailController.clear();
-                  _passwordController.clear();
-                }, child: Text("Clear")),
+                Divider(
+                  indent: 20,
+                  endIndent: 20,
+                  color: Colors.black,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(onPressed: (){
+                      print(_nameController.text);
+                      print(_emailController.text);
+                      print(_passwordController.text);
+                    }, child: Text("Submit")),
+                    ElevatedButton(onPressed: (){
+                      _nameController.clear();
+                      _emailController.clear();
+                      _passwordController.clear();
+                    }, child: Text("Clear")),
+                  ],
+                )
               ],
             ),
           ),
