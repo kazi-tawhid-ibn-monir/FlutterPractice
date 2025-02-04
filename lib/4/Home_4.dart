@@ -10,9 +10,7 @@ class Home extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
         title: Text("Simple Form"),
-        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -25,7 +23,10 @@ class Home extends StatelessWidget {
                     TextFormField(
                       controller: email,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.5)),
                           hintText: "E-mail",
                           label: Text("Email")),
                       validator: (value) {
@@ -40,7 +41,10 @@ class Home extends StatelessWidget {
                       controller: password,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.5)),
                           hintText: "Password",
                           label: Text("Password")),
                       validator: (value) {
@@ -55,10 +59,13 @@ class Home extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange),
                           onPressed: () {
-                            if (_formKey.currentState!.validate()) {}
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UserInfo()));
+                            }
                           },
                           child: Text(
                             "Submit",
@@ -71,8 +78,6 @@ class Home extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange),
                           onPressed: () {
                             email.clear();
                             password.clear();
@@ -92,6 +97,92 @@ class Home extends StatelessWidget {
           print("Button Pressed");
         },
         label: Text("Add New"),
+      ),
+    );
+  }
+}
+
+//--------------------------------------------------User page------------------------------------------------------
+
+class UserInfo extends StatelessWidget {
+  const UserInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("User Page"),
+      ),
+      body: Column(
+        children: [
+          Text(
+            "This is my User page",
+            style: TextStyle(fontSize: 20, color: Colors.black87),
+          ),
+          SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => page1()));
+                  },
+                  child: Text(
+                    "Next Page",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ))),
+          SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                  child: Text(
+                    "Back",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  )))
+        ],
+      ),
+    );
+  }
+}
+
+//----------------------------------------------page-1----------------------------------------------------------
+
+class page1 extends StatelessWidget {
+  const page1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Page-1"),
+      ),
+      body: Column(
+        children: [
+          Center(
+            child: Text("This is my Page-1"),
+          ),
+          SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text("Back"))),
+          SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                  },
+                  child: Text(
+                    "Back To Home",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ))),
+        ],
       ),
     );
   }
